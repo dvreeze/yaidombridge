@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-package eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.simple
+package eu.cdevreeze.yaidombridge.conversions.toyaidom.node.indexed
 
 import eu.cdevreeze.yaidom
 import eu.cdevreeze.yaidom2
+import eu.cdevreeze.yaidombridge.conversions.toyaidom.node.simple.SimpleDocumentFactoryFromYaidom2
 
 /**
- * Simple document factories for yaidom2 from yaidom scoped documents.
+ * Indexed document factories for yaidom from yaidom2 backing documents.
  *
  * @author Chris de Vreeze
  */
-object SimpleDocumentFactoryFromYaidom {
+object IndexedDocumentFactoryFromYaidom2 {
 
   /**
-   * Creates a yaidom2 simple document from the given yaidom document (of any type, as long as the document element is a scoped element).
+   * Creates a yaidom indexed document from the given yaidom2 backing document.
    */
-  def fromYaidomDocument(doc: yaidom.queryapi.DocumentApi.Aux[_, _ <: yaidom.queryapi.ScopedNodes.Elem]): yaidom2.node.simple.Document = {
-    val docElem: yaidom2.node.simple.Elem =
-      SimpleNodeFactoryFromYaidom.fromYaidomScopedElem(doc.documentElement)
+  def fromYaidom2Document(doc: yaidom2.queryapi.BackingDocumentApi): yaidom.indexed.Document = {
+    val simpleDoc: yaidom.simple.Document = SimpleDocumentFactoryFromYaidom2.fromYaidom2Document(doc)
 
-    yaidom2.node.simple.SimpleDocument(doc.uriOption, Seq(docElem))
+    yaidom.indexed.Document.from(simpleDoc)
   }
 }

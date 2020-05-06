@@ -22,12 +22,18 @@ import eu.cdevreeze.yaidombridge.conversions.toyaidom.DeclarationsConversionsToY
 import eu.cdevreeze.yaidombridge.conversions.toyaidom.ENameConversionsToYaidom
 import eu.cdevreeze.yaidombridge.conversions.toyaidom.QNameConversionsToYaidom
 import eu.cdevreeze.yaidombridge.conversions.toyaidom.ScopeConversionsToYaidom
+import eu.cdevreeze.yaidombridge.conversions.toyaidom.node.indexed.IndexedDocumentConversionsToYaidom
+import eu.cdevreeze.yaidombridge.conversions.toyaidom.node.indexed.IndexedNodeConversionsToYaidom
+import eu.cdevreeze.yaidombridge.conversions.toyaidom.node.resolved.ResolvedNodeConversionsToYaidom
 import eu.cdevreeze.yaidombridge.conversions.toyaidom.node.simple.SimpleDocumentConversionsToYaidom
 import eu.cdevreeze.yaidombridge.conversions.toyaidom.node.simple.SimpleNodeConversionsToYaidom
 import eu.cdevreeze.yaidombridge.conversions.toyaidom2.DeclarationsConversionsToYaidom2
 import eu.cdevreeze.yaidombridge.conversions.toyaidom2.ENameConversionsToYaidom2
 import eu.cdevreeze.yaidombridge.conversions.toyaidom2.QNameConversionsToYaidom2
 import eu.cdevreeze.yaidombridge.conversions.toyaidom2.ScopeConversionsToYaidom2
+import eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.indexed.IndexedDocumentConversionsToYaidom2
+import eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.indexed.IndexedNodeConversionsToYaidom2
+import eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.resolved.ResolvedNodeConversionsToYaidom2
 import eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.simple.SimpleDocumentConversionsToYaidom2
 import eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.simple.SimpleNodeConversionsToYaidom2
 
@@ -96,5 +102,35 @@ package object conversions {
   implicit class ToYaidomSimpleDocument(val doc: yaidom2.node.simple.Document) extends AnyVal {
 
     def toYaidom: yaidom.simple.Document = SimpleDocumentConversionsToYaidom.convertDocument(doc)
+  }
+
+  implicit class ToYaidom2IndexedElem(val elem: yaidom.indexed.Elem) extends AnyVal {
+
+    def toYaidom2: yaidom2.node.indexed.Elem = IndexedNodeConversionsToYaidom2.convertElem(elem)
+  }
+
+  implicit class ToYaidomIndexedElem(val elem: yaidom2.node.indexed.Elem) extends AnyVal {
+
+    def toYaidom: yaidom.indexed.Elem = IndexedNodeConversionsToYaidom.convertElem(elem)
+  }
+
+  implicit class ToYaidom2IndexedDocument(val doc: yaidom.indexed.Document) extends AnyVal {
+
+    def toYaidom2: yaidom2.node.indexed.Document = IndexedDocumentConversionsToYaidom2.convertDocument(doc)
+  }
+
+  implicit class ToYaidomIndexedDocument(val doc: yaidom2.node.indexed.Document) extends AnyVal {
+
+    def toYaidom: yaidom.indexed.Document = IndexedDocumentConversionsToYaidom.convertDocument(doc)
+  }
+
+  implicit class ToYaidom2ResolvedElem(val elem: yaidom.resolved.Elem) extends AnyVal {
+
+    def toYaidom2: yaidom2.node.resolved.Elem = ResolvedNodeConversionsToYaidom2.convertElem(elem)
+  }
+
+  implicit class ToYaidomResolvedElem(val elem: yaidom2.node.resolved.Elem) extends AnyVal {
+
+    def toYaidom: yaidom.resolved.Elem = ResolvedNodeConversionsToYaidom.convertElem(elem)
   }
 }

@@ -14,25 +14,23 @@
  * limitations under the License.
  */
 
-package eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.simple
+package eu.cdevreeze.yaidombridge.conversions.toyaidom.node.resolved
 
 import eu.cdevreeze.yaidom
 import eu.cdevreeze.yaidom2
 
 /**
- * Simple document factories for yaidom2 from yaidom scoped documents.
+ * Resolved node conversions from yaidom2 to yaidom.
  *
  * @author Chris de Vreeze
  */
-object SimpleDocumentFactoryFromYaidom {
+object ResolvedNodeConversionsToYaidom {
 
-  /**
-   * Creates a yaidom2 simple document from the given yaidom document (of any type, as long as the document element is a scoped element).
-   */
-  def fromYaidomDocument(doc: yaidom.queryapi.DocumentApi.Aux[_, _ <: yaidom.queryapi.ScopedNodes.Elem]): yaidom2.node.simple.Document = {
-    val docElem: yaidom2.node.simple.Elem =
-      SimpleNodeFactoryFromYaidom.fromYaidomScopedElem(doc.documentElement)
+  def convertNode(node: yaidom2.node.resolved.Node): yaidom.resolved.Node = {
+    ResolvedNodeFactoryFromYaidom2.fromYaidom2ClarkNode(node)
+  }
 
-    yaidom2.node.simple.SimpleDocument(doc.uriOption, Seq(docElem))
+  def convertElem(elem: yaidom2.node.resolved.Elem): yaidom.resolved.Elem = {
+    ResolvedNodeFactoryFromYaidom2.fromYaidom2ClarkElem(elem)
   }
 }
