@@ -29,7 +29,7 @@ object SimpleDocumentFactoryFromYaidom2 {
   /**
    * Creates a yaidom simple document from the given yaidom2 scoped document.
    */
-  def fromYaidomDocument(doc: yaidom2.queryapi.ScopedDocumentApi): yaidom.simple.Document = {
+  def fromYaidom2Document(doc: yaidom2.queryapi.ScopedDocumentApi): yaidom.simple.Document = {
     val children: IndexedSeq[yaidom.simple.CanBeDocumentChild] =
       doc.children.to(IndexedSeq).map(SimpleNodeFactoryFromYaidom2.fromYaidom2ScopedNode).collect {
         case ch: yaidom.simple.CanBeDocumentChild => ch

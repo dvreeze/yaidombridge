@@ -27,6 +27,6 @@ import eu.cdevreeze.yaidom2
 object SimpleDocumentConversionsToYaidom {
 
   def convertDocument(doc: yaidom2.node.simple.Document): yaidom.simple.Document = {
-    SimpleDocumentFactoryFromYaidom2.fromYaidomDocument(doc)
+    SimpleDocumentFactoryFromYaidom2.fromYaidom2Document(doc)
   }
 }
