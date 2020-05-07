@@ -40,9 +40,11 @@ import eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.simple.SimpleNodeCon
 /**
  * Implicit classes extending ENames, QNames, simple/indexed/resolved elements with toYaidom or toYaidom2 methods.
  *
+ * Add "import eu.cdevreeze.yaidombridge.sharedconversions._" to application code for using these "extension functions".
+ *
  * @author Chris de Vreeze
  */
-package object conversions {
+object sharedconversions {
 
   implicit class ToYaidom2EName(val ename: yaidom.core.EName) extends AnyVal {
 

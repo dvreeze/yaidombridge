@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-package eu.cdevreeze
+package eu.cdevreeze.yaidombridge.conversions.toyaidom2.node.jsdom
+
+import eu.cdevreeze.yaidom
+import eu.cdevreeze.yaidom2
 
 /**
- * Conversions between yaidom and yaidom2 for ENames, QNames, simple/indexed/resolved elements, etc. Also views as an alternative
- * to (deep) conversions of element implementations. Also generic variants of several conversions.
- *
- * To use toYaidom and toYaidom2 "extension methods", just import "eu.cdevreeze.yaidombridge.sharedconversions._".
- * There are similar imports for Saxon (JVM-only) and JS-Dom (JS-only), namely for saxonconversions and jsdomconversions.
+ * JsDom document conversions from yaidom to yaidom2.
  *
  * @author Chris de Vreeze
  */
-package object yaidombridge
+object JsDomDocumentConversionsToYaidom2 {
+
+  def convertDocument(doc: yaidom.jsdom.JsDomDocument): yaidom2.node.jsdom.JsDomDocument = {
+    yaidom2.node.jsdom.JsDomDocument(doc.wrappedDocument)
+  }
+}

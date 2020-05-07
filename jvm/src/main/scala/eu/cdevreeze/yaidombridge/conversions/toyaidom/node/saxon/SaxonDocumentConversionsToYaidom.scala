@@ -14,15 +14,20 @@
  * limitations under the License.
  */
 
-package eu.cdevreeze
+package eu.cdevreeze.yaidombridge.conversions.toyaidom.node.saxon
+
+import eu.cdevreeze.yaidom
+import eu.cdevreeze.yaidom2
 
 /**
- * Conversions between yaidom and yaidom2 for ENames, QNames, simple/indexed/resolved elements, etc. Also views as an alternative
- * to (deep) conversions of element implementations. Also generic variants of several conversions.
- *
- * To use toYaidom and toYaidom2 "extension methods", just import "eu.cdevreeze.yaidombridge.sharedconversions._".
- * There are similar imports for Saxon (JVM-only) and JS-Dom (JS-only), namely for saxonconversions and jsdomconversions.
+ * Saxon document conversions from yaidom2 to yaidom.
  *
  * @author Chris de Vreeze
  */
-package object yaidombridge
+object SaxonDocumentConversionsToYaidom {
+
+  def convertDocument(doc: yaidom2.node.saxon.Document): yaidom.saxon.SaxonDocument = {
+    yaidom.saxon.SaxonDocument
+      .wrapDocument(doc.xdmNode.getUnderlyingNode.ensuring(Option(_).nonEmpty).getTreeInfo.ensuring(Option(_).nonEmpty))
+  }
+}
