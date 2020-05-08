@@ -16,7 +16,7 @@ lazy val commonSettings = Seq(
   name         := "yaidombridge",
   description  := "Conversions between yaidom and yaidom2",
   organization := "eu.cdevreeze.yaidombridge",
-  version      := "0.1.0-SNAPSHOT",
+  version      := "0.1.0",
 
   scalaVersion       := scalaVer,
   crossScalaVersions := crossScalaVer,
